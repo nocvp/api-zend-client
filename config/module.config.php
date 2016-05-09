@@ -18,6 +18,7 @@ return array(
      * fill your credentials (only supported client_credentials grant type)
      *
     'noc_vp_client' => array(
+        'url' => '',
         'client_id' => '',
         'client_secret' => '',
     ),
