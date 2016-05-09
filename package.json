@@ -1,0 +1,18 @@
+{
+  "name": "nocvp-api-client",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nocvp/api-zend-client.git"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bump": "^2.1.0",
+    "gulp-conventional-changelog": "^1.1.0",
+    "gulp-git": "^1.7.1",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-util": "^3.0.7",
+    "minimist": "^1.2.0",
+    "run-sequence": "^1.1.5"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "nocvp/zend-nocvp-client",
+  "homepage": "https://www.vimany.com",
+  "version": "0.0.0",
+  "autoload": {
+    "psr-4": {
+      "NocVpClient\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.0",
+    "zendframework/zend-modulemanager": "^2.7",
+    "zendframework/zend-config": "^2.6",
+    "zendframework/zend-servicemanager": "^3.0.3",
+    "zendframework/zend-http": "^2.5",
+    "zendframework/zend-json": "^3",
+    "zendframework/zend-mvc": "^2.7"
+  }
+}
