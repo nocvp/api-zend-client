@@ -1,3 +1,13 @@
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/nocvp/api-zend-client/compare/0.2.3...v0.2.4) (2016-05-09)
+
+
+### Features
+
+* **product:** add product module([69d53e1](https://github.com/nocvp/api-zend-client/commit/69d53e1))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/nocvp/api-zend-client/compare/0.2.2...v0.2.3) (2016-05-09)
 
