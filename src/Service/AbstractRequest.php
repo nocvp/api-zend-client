@@ -8,7 +8,12 @@
 
 namespace NocVpClient\Service;
 
+use NocVpClient\Service\Exception\ApiServerException;
 use NocVpClient\Service\Exception\MethodNotAllowedException;
+use NocVpClient\Service\Exception\BadRequestException;
+use NocVpClient\Service\Exception\EntityNotFoundException;
+use NocVpClient\Service\Exception\ForbiddenException;
+
 use Zend\Http\Client;
 use Zend\Http\Request;
 
@@ -55,23 +60,39 @@ class AbstractRequest implements RequestInterface
                     'client_secret' => $this->_options['client_secret'],
                 ));
 
-                $dt = fopen($file, 'w+');
-                fwrite($dt, $token);
-                fclose($dt);
-
                 $this->_token = $token->getTokenType() . ' ' . $token->getAccessToken();
+
+                $dt = fopen($file, 'w+');
+                fwrite($dt, $this->_token);
+                fclose($dt);
             }
         }
 
         return $this->_token;
     }
 
+    /**
+     * @param $path
+     * @param $method
+     * @param bool|true $widthToken
+     * @param null $body
+     * @return \Zend\Http\Response
+     * @throws ApiServerException
+     * @throws BadRequestException
+     * @throws EntityNotFoundException
+     * @throws ForbiddenException
+     * @throws MethodNotAllowedException
+     */
     public function request($path, $method, $widthToken = true, $body = null)
     {
         $request = new Request();
         $request->setMethod($method);
         $request->setUri($this->_options['url'] . $path);
         $request->setContent($body);
+
+        $request->getHeaders()->addHeaders(array(
+            'Content-Type' => 'application/json',
+        ));
 
         if ($widthToken === true) {
             $request->getHeaders()->addHeaders(array(
@@ -81,6 +102,24 @@ class AbstractRequest implements RequestInterface
 
         $client = new Client();
         $client->send($request);
+
+        if ($client->getResponse()->getStatusCode() == 401) {
+            $this->getToken(true);
+
+            $this->request($path, $method, $widthToken, $body);
+        } else if ($client->getResponse()->getStatusCode() == 403) {
+            throw new ForbiddenException('Forbidden this endpoint.');
+        } else if ($client->getResponse()->getStatusCode() == 404) {
+            throw new EntityNotFoundException('Entity not found.');
+        } else if ($client->getResponse()->getStatusCode() == 405) {
+            throw new MethodNotAllowedException('Forbidden this endpoint.');
+        } else if ($client->getResponse()->getStatusCode() == 400) {
+            throw new BadRequestException('Bad Request.');
+        } else if ($client->getResponse()->getStatusCode() == 500) {
+            throw new ApiServerException('Api server exception.');
+        } else {
+            return $client->getResponse();
+        }
 
         return $client->getResponse();
     }
