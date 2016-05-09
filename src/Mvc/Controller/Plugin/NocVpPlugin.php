@@ -6,7 +6,7 @@
  * Time: 14:35
  */
 
-namespace NocVpClient\Mvc\Controller;
+namespace NocVpClient\Mvc\Controller\Plugin;
 
 use Interop\Container\ContainerInterface;
 use NocVpClient\Service\ProductService;

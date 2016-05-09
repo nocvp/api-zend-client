@@ -10,7 +10,7 @@ namespace NocVpClient\Mvc\Controller\Plugin\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use NocVpClient\Mvc\Controller\NocVpPlugin;
+use NocVpClient\Mvc\Controller\Plugin\NocVpPlugin;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
