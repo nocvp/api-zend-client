@@ -52,9 +52,9 @@ class Product extends AbstractResponse
     protected $asset_limit;
 
     /**
-     * @param array $data
+     * @param null $data
      */
-    public function __construct(array $data = array())
+    public function __construct($data = null)
     {
         parent::__construct($data);
     }

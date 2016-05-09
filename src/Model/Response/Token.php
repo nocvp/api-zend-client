@@ -27,7 +27,10 @@ class Token extends AbstractResponse
      */
     protected $token_type;
 
-    public function __construct(array $data = array())
+    /**
+     * @param null $data
+     */
+    public function __construct($data = null)
     {
         parent::__construct($data);
     }
