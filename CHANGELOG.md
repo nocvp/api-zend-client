@@ -1,3 +1,13 @@
+<a name="0.2.6"></a>
+## [0.2.6](https://github.com/nocvp/api-zend-client/compare/0.2.5...v0.2.6) (2016-05-09)
+
+
+### Bug Fixes
+
+* **general:** api request fixes([cf5e188](https://github.com/nocvp/api-zend-client/commit/cf5e188))
+
+
+
 <a name="0.2.5"></a>
 ## [0.2.5](https://github.com/nocvp/api-zend-client/compare/0.2.4...v0.2.5) (2016-05-09)
 
