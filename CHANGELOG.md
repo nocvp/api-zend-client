@@ -1,3 +1,16 @@
+<a name="0.2.10"></a>
+## [0.2.10](https://github.com/nocvp/api-zend-client/compare/0.2.9...v0.2.10) (2016-05-10)
+
+
+### Features
+
+* **examples:** update account.md([7a9cbb9](https://github.com/nocvp/api-zend-client/commit/7a9cbb9))
+* **examples:** update account.md([db51b70](https://github.com/nocvp/api-zend-client/commit/db51b70))
+* **examples:** update account.md([e41b75a](https://github.com/nocvp/api-zend-client/commit/e41b75a))
+* **examples:** update account.md([f90918b](https://github.com/nocvp/api-zend-client/commit/f90918b))
+
+
+
 <a name="0.2.9"></a>
 ## [0.2.9](https://github.com/nocvp/api-zend-client/compare/0.2.8...v0.2.9) (2016-05-10)
 
