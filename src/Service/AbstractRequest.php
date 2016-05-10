@@ -21,8 +21,12 @@ use Zend\Http\Request;
  * Class AbstractRequest
  * @package NocVpClient\Service
  */
-class AbstractRequest implements RequestInterface
+abstract class AbstractRequest implements RequestInterface
 {
+    /**
+     * @var string
+     */
+    protected $_endpoint = '/v1/subscription';
     /**
      * @var array
      */
@@ -71,18 +75,6 @@ class AbstractRequest implements RequestInterface
         return $this->_token;
     }
 
-    /**
-     * @param $path
-     * @param $method
-     * @param bool|true $widthToken
-     * @param null $body
-     * @return \Zend\Http\Response
-     * @throws ApiServerException
-     * @throws BadRequestException
-     * @throws EntityNotFoundException
-     * @throws ForbiddenException
-     * @throws MethodNotAllowedException
-     */
     public function request($path, $method, $widthToken = true, $body = null)
     {
         $request = new Request();
@@ -124,55 +116,31 @@ class AbstractRequest implements RequestInterface
         return $client->getResponse();
     }
 
-    /**
-     * @param $id
-     * @throws MethodNotAllowedException
-     */
     public function fetch($id)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
-    /**
-     * @param array $params
-     * @throws MethodNotAllowedException
-     */
     public function fetchAll(array $params = array())
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
-    /**
-     * @param array $data
-     * @throws MethodNotAllowedException
-     */
-    public function create(array $data)
+    public function create($data)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
-    /**
-     * @param $id
-     * @param array $data
-     * @throws MethodNotAllowedException
-     */
-    public function update($id, array $data)
+    public function update($id, $data)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
-    /**
-     * @param $id
-     * @throws MethodNotAllowedException
-     */
     public function delete($id)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
-    /**
-     * @return array
-     */
     public function getOptions()
     {
         return $this->_options;
@@ -200,5 +168,21 @@ class AbstractRequest implements RequestInterface
     public function setTokenClient($token_client)
     {
         $this->_token_client = $token_client;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return $this->_endpoint;
+    }
+
+    /**
+     * @param string $endpoint
+     */
+    public function setEndpoint($endpoint)
+    {
+        $this->_endpoint = $endpoint;
     }
 }

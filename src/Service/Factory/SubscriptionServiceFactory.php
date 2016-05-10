@@ -7,17 +7,21 @@
  * Time: 15:13
  */
 
-namespace NocVpClient\Factory;
+namespace NocVpClient\Service\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use NocVpClient\Service\Exception\ConfigNotFoundException;
-use NocVpClient\Service\TokenService;
+use NocVpClient\Service\SubscriptionService;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
-class TokenServiceFactory implements  FactoryInterface
+/**
+ * Class SubscriptionServiceFactory
+ * @package NocVpClient\Factory
+ */
+class SubscriptionServiceFactory implements FactoryInterface
 {
     /**
      * Create an object
@@ -39,8 +43,9 @@ class TokenServiceFactory implements  FactoryInterface
             throw new ConfigNotFoundException('noc_vp_client not found in your config');
         }
 
-        $tokenService = new TokenService($config['noc_vp_client']);
+        $subscriptionService = new SubscriptionService($config['noc_vp_client']);
+        $subscriptionService->setTokenClient($container->get('NocVp\TokenClient'));
 
-        return $tokenService;
+        return $subscriptionService;
     }
 }

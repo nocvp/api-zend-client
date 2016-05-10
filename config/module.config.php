@@ -25,9 +25,8 @@ return array(
     */
     'service_manager' => array(
         'factories' => array(
-            'NocVp\ProductClient' => NocVpClient\Factory\ProductServiceFactory::class,
-            'NocVp\SubscriptionClient' => NocVpClient\Factory\SubscriptionServiceFactory::class,
-            'NocVp\TokenClient' => NocVpClient\Factory\TokenServiceFactory::class,
+            'NocVp\SubscriptionClient' => NocVpClient\Service\Factory\SubscriptionServiceFactory::class,
+            'NocVp\TokenClient' => NocVpClient\Service\Factory\TokenServiceFactory::class,
         ),
     ),
     'controller_plugins' => array(

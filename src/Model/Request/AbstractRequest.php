@@ -14,7 +14,7 @@ use Zend\Json\Json;
  * Class AbstractRequest
  * @package NocVpClient\Model\Request
  */
-class AbstractRequest
+abstract class AbstractRequest
 {
     /**
      * @param null $data

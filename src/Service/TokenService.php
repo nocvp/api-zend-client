@@ -8,19 +8,30 @@
 
 namespace NocVpClient\Service;
 
-use NocVpClient\Model\Request\Token;
+use NocVpClient\Model\Response\Token;
+use NocVpClient\Service\Exception\InvalidRequestDataException;
 use Zend\Http\Request;
 
 class TokenService extends AbstractRequest
 {
-    public function create(array $data)
+    protected $_endpoint = '/oauth';
+
+    public function create($tokenRequest)
     {
-        $tokenRequest = new Token();
-        $tokenRequest->setClientId($data['client_id']);
-        $tokenRequest->setClientSecret($data['client_secret']);
+        if (is_array($tokenRequest) === true) {
+            $data = $tokenRequest;
 
-        $response = $this->request('/oauth', Request::METHOD_POST, false, $tokenRequest->toJson());
+            $tokenRequest = new \NocVpClient\Model\Request\Token($data);
+        } else if (is_object($tokenRequest) !== true) {
+            throw new InvalidRequestDataException('Invalid Token Data');
+        } else if ($tokenRequest instanceof \NocVpClient\Model\Request\Token !== true) {
+            throw new InvalidRequestDataException(
+                'Token Data must be an array or NocVpClient\Model\Request\Token instance'
+            );
+        }
 
-        return new \NocVpClient\Model\Response\Token($response->getBody());
+        $response = $this->request($this->getEndpoint(), Request::METHOD_POST, false, $tokenRequest->toJson());
+
+        return new Token($response->getBody());
     }
 }
