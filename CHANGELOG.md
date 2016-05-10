@@ -1,3 +1,14 @@
+<a name="0.2.7"></a>
+## [0.2.7](https://github.com/nocvp/api-zend-client/compare/0.2.6...v0.2.7) (2016-05-10)
+
+
+### Features
+
+* **plugin:** add account, user and client models, add README([6c48e1f](https://github.com/nocvp/api-zend-client/commit/6c48e1f))
+* **subscription:** add subscription client, delete product support, update service factories([a9118aa](https://github.com/nocvp/api-zend-client/commit/a9118aa))
+
+
+
 <a name="0.2.6"></a>
 ## [0.2.6](https://github.com/nocvp/api-zend-client/compare/0.2.5...v0.2.6) (2016-05-09)
 
