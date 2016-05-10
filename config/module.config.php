@@ -11,9 +11,6 @@ namespace NocVpClient;
 use NocVpClient;
 
 return array(
-    'modules' => array(
-        'NocVpClient',
-    ),
     /*
      * fill your credentials (only supported client_credentials grant type)
      *
