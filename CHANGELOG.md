@@ -1,3 +1,13 @@
+<a name="0.2.8"></a>
+## [0.2.8](https://github.com/nocvp/api-zend-client/compare/0.2.7...v0.2.8) (2016-05-10)
+
+
+### Features
+
+* **plugin:** update README.md([3690a99](https://github.com/nocvp/api-zend-client/commit/3690a99))
+
+
+
 <a name="0.2.7"></a>
 ## [0.2.7](https://github.com/nocvp/api-zend-client/compare/0.2.6...v0.2.7) (2016-05-10)
 
