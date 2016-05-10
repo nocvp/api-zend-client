@@ -5,7 +5,7 @@
 ### In Your Controller
 
 ```php
-$this->NoVp()->account()->fetch($accountId);
+$this->NocVp()->account()->fetch($accountId);
 ```
 
 ### With Interop\Container\ContainerInterface
@@ -20,7 +20,7 @@ $account->fetch($accountId);
 ### In Your Controller
 
 ```php
-$this->NoVp()->account()->fetchAll();
+$this->NocVp()->account()->fetchAll();
 ```
 
 ### With Interop\Container\ContainerInterface
@@ -36,7 +36,7 @@ $account->fetchAll();
 
 #### Array Based Request
 ```php
-$this->NoVp()->account()->create(array (
+$this->NocVp()->account()->create(array (
     'firstName' => 'john',
     'lastName' => 'doe',
     'email' => 'john.doe@example.com',
@@ -52,7 +52,7 @@ $accountModel->setEmail('john.doe@example.com');
 ```
 
 ```php
-$this->NoVp()->account()->create($accountModel);
+$this->NocVp()->account()->create($accountModel);
 ```
 
 ### With Interop\Container\ContainerInterface
@@ -87,7 +87,7 @@ $account->create($accountModel);
 
 #### Array Based Request
 ```php
-$this->NoVp()->account()->update($accountId, array (
+$this->NocVp()->account()->update($accountId, array (
     'firstName' => 'john',
     'lastName' => 'doe',
     'email' => 'john.doe@example.com',
@@ -103,7 +103,7 @@ $accountModel->setEmail('john.doe@example.com');
 ```
 
 ```php
-$this->NoVp()->account()->update($accountId, $accountModel);
+$this->NocVp()->account()->update($accountId, $accountModel);
 ```
 
 ### With Interop\Container\ContainerInterface
@@ -137,7 +137,7 @@ $account->update($accountId, $accountModel);
 ### In Your Controller
 
 ```php
-$this->NoVp()->account()->delete($accountId);
+$this->NocVp()->account()->delete($accountId);
 ```
 
 ### With Interop\Container\ContainerInterface
