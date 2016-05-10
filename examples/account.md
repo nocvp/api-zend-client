@@ -2,33 +2,42 @@
 
 ## fetch
 
-### with controller plugin
+### in your controller
 
-### with service locator
+```php
+$this->NoVp()->account()->fetchAll();
+```
+
+### with container
+
+```php
+$account = $container->get('NocVp\Account')
+$account->fetchAll();
+```
 
 ## fetchAll
 
-### with controller plugin
+### in your controller
 
-### with service locator
+### with container
 
 
 ## create
 
-### with controller plugin
+### in your controller
 
-### with service locator
+### with container
 
 
 ## update
 
-### with controller plugin
+### in your controller
 
-### with service locator
+### with container
 
 
 ## delete
 
-### with controller plugin
+### in your controller
 
-### with service locator
+### with container
