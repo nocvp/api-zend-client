@@ -25,8 +25,11 @@ return array(
     */
     'service_manager' => array(
         'factories' => array(
-            'NocVp\SubscriptionClient' => NocVpClient\Service\Factory\SubscriptionServiceFactory::class,
-            'NocVp\TokenClient' => NocVpClient\Service\Factory\TokenServiceFactory::class,
+            'NocVp\Token' => NocVpClient\Service\Factory\TokenServiceFactory::class,
+            'NocVp\Subscription' => NocVpClient\Service\Factory\SubscriptionServiceFactory::class,
+            'NocVp\Account' => NocVpClient\Service\Factory\AccountServiceFactory::class,
+            'NocVp\User' => NocVpClient\Service\Factory\UserServiceFactory::class,
+            'NocVp\Client' => NocVpClient\Service\Factory\ClientServiceFactory::class,
         ),
     ),
     'controller_plugins' => array(

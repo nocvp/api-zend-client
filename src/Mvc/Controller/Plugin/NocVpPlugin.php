@@ -49,7 +49,7 @@ class NocVpPlugin extends AbstractPlugin
     public function __call($name , array $arguments)
     {
         $formattedName = ucfirst($name);
-        $serviceNameSpace = 'NocVp\\' . $formattedName . 'Client';
+        $serviceNameSpace = 'NocVp\\' . $formattedName;
 
         if ($this->getContainer()->has($serviceNameSpace) !== true) {
             throw new ServiceNotFoundException('Service Not Found: ' . $serviceNameSpace, 400);
