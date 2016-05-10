@@ -1,6 +1,6 @@
 # Account Module
 
-## fetch
+## FETCH
 
 ### In Your Controller
 
@@ -15,7 +15,7 @@ $account = $container->get('NocVp\Account')
 $account->fetch($accountId);
 ```
 
-## fetchAll
+## FETCH ALL
 
 ### In Your Controller
 
@@ -30,7 +30,7 @@ $account = $container->get('NocVp\Account');
 $account->fetchAll();
 ```
 
-## create
+## CREATE
 
 ### In Your Controller
 
@@ -76,8 +76,7 @@ $account = $container->get('NocVp\Account');
 $account->create($accountModel);
 ```
 
-
-## update
+## UPDATE
 
 ### In Your Controller
 
@@ -123,7 +122,7 @@ $account = $container->get('NocVp\Account');
 $account->update($accountId, $accountModel);
 
 
-## delete
+## DELETE
 
 ### In Your Controller
 
