@@ -1,3 +1,13 @@
+<a name="0.2.9"></a>
+## [0.2.9](https://github.com/nocvp/api-zend-client/compare/0.2.8...v0.2.9) (2016-05-10)
+
+
+### Features
+
+* **plugin:** add account, user, client services, update service name convention.([73eb52e](https://github.com/nocvp/api-zend-client/commit/73eb52e))
+
+
+
 <a name="0.2.8"></a>
 ## [0.2.8](https://github.com/nocvp/api-zend-client/compare/0.2.7...v0.2.8) (2016-05-10)
 
