@@ -9,9 +9,11 @@
 namespace NocVpClient\Mvc\Controller\Plugin;
 
 use Interop\Container\ContainerInterface;
-use NocVpClient\Service\ProductService;
+use NocVpClient\Service\AccountService;
+use NocVpClient\Service\ClientService;
 use NocVpClient\Service\SubscriptionService;
 use NocVpClient\Service\TokenService;
+use NocVpClient\Service\UserService;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 
@@ -19,9 +21,11 @@ use Zend\ServiceManager\Exception\ServiceNotFoundException;
  * Class NocVpPlugin
  * @package NocVpClient\Mvc\Controller
  *
- * @method SubscriptionService subscription
- * @method ProductService product
  * @method TokenService token
+ * @method SubscriptionService subscription
+ * @method AccountService account
+ * @method UserService user
+ * @method ClientService client
  */
 class NocVpPlugin extends AbstractPlugin
 {
