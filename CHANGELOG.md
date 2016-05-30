@@ -1,3 +1,13 @@
+<a name="0.2.12"></a>
+## [0.2.12](https://github.com/nocvp/api-zend-client/compare/0.2.11...v0.2.12) (2016-05-30)
+
+
+### Bug Fixes
+
+* **composer:** fix php version([dccc7d0](https://github.com/nocvp/api-zend-client/commit/dccc7d0))
+
+
+
 <a name="0.2.11"></a>
 ## [0.2.11](https://github.com/nocvp/api-zend-client/compare/0.2.10...v0.2.11) (2016-05-11)
 
