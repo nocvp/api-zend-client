@@ -44,7 +44,7 @@ class AccountServiceFactory implements FactoryInterface
         }
 
         $accountService = new AccountService($config['noc_vp_client']);
-        $accountService->setTokenClient($container->get('NocVp\TokenClient'));
+        $accountService->setTokenClient($container->get('NocVp\Token'));
 
         return $accountService;
     }

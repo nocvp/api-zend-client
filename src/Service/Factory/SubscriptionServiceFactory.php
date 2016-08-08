@@ -44,7 +44,7 @@ class SubscriptionServiceFactory implements FactoryInterface
         }
 
         $subscriptionService = new SubscriptionService($config['noc_vp_client']);
-        $subscriptionService->setTokenClient($container->get('NocVp\TokenClient'));
+        $subscriptionService->setTokenClient($container->get('NocVp\Token'));
 
         return $subscriptionService;
     }

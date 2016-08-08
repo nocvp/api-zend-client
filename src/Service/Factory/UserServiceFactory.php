@@ -44,7 +44,7 @@ class UserServiceFactory implements FactoryInterface
         }
 
         $userService = new UserService($config['noc_vp_client']);
-        $userService->setTokenClient($container->get('NocVp\TokenClient'));
+        $userService->setTokenClient($container->get('NocVp\Token'));
 
         return $userService;
     }
