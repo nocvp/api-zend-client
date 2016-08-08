@@ -28,10 +28,14 @@ return [
                 'videos' => [
                     'type' => Segment::class,
                     'options' => [
-                        'route' => '/noc-vp/api/:service',
+                        'route' => '[/:lang]/noc-vp/api/:service',
                         'defaults' => [
                             'controller' => NocVpClient\Mvc\Controller\ApiController::class,
+                            'lang' => 'en',
                         ],
+                        'constraints' => array(
+                            'lang' => '(en|tr|de|fr|nl)?',
+                        ),
                     ],
                 ],
             ],
