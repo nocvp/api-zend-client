@@ -35,9 +35,10 @@ class ApiController extends AbstractRestfulController
     {
         /* @var $service AbstractRequest */
         $service = $this->NocVp()->{$this->service_name}();
+        $service->setHydration(AbstractRequest::HYDRATE_ARRAY);
 
         return new JsonModel(
-            $service->fetchAll($this->params()->fromQuery())->toArray()
+            $service->fetchAll($this->params()->fromQuery())
         );
     }
 
@@ -49,9 +50,10 @@ class ApiController extends AbstractRestfulController
     {
         /* @var $service AbstractRequest */
         $service = $this->NocVp()->{$this->service_name}();
+        $service->setHydration(AbstractRequest::HYDRATE_ARRAY);
 
         return new JsonModel(
-            $service->fetch($this->params()->fromRoute('id'))->toArray()
+            $service->fetch($this->params()->fromRoute('id'))
         );
     }
 }
