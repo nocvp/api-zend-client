@@ -1,7 +1,7 @@
 {
   "name": "nocvp/zend-nocvp-client",
   "homepage": "https://www.vimany.com",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "autoload": {
     "psr-4": {
       "NocVpClient\\": "src/"
