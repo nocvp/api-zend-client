@@ -20,11 +20,12 @@ class ClientService extends AbstractRequest
     public function fetch($id)
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_GET);
+        $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
         if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
-            return new Client($response->getBody());
+            return new Client($data);
         } else{
-            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+            return $data;
         }
     }
 

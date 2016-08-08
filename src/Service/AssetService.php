@@ -19,11 +19,12 @@ class AssetService extends AbstractRequest
     public function fetch($id)
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_GET);
+        $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
         if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
-            return new Asset($response->getBody());
+            return new Asset($data);
         } else{
-            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+            return $data;
         }
     }
 

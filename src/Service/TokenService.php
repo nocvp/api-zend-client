@@ -32,11 +32,12 @@ class TokenService extends AbstractRequest
         }
 
         $response = $this->request($this->getEndpoint(), Request::METHOD_POST, false, $tokenRequest->toJson());
+        $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
         if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
-            return new Token($response->getBody());
+            return new Token($data);
         } else{
-            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+            return $data;
         }
     }
 }
