@@ -8,6 +8,7 @@
 
 namespace NocVpClient\Service;
 
+use NocVpClient\Model\Response\AbstractResponse;
 use NocVpClient\Service\Exception\ApiServerException;
 use NocVpClient\Service\Exception\MethodNotAllowedException;
 use NocVpClient\Service\Exception\BadRequestException;
@@ -75,6 +76,18 @@ abstract class AbstractRequest implements RequestInterface
         return $this->_token;
     }
 
+    /**
+     * @param $path
+     * @param $method
+     * @param bool $widthToken
+     * @param null $body
+     * @return \Zend\Http\Response
+     * @throws ApiServerException
+     * @throws BadRequestException
+     * @throws EntityNotFoundException
+     * @throws ForbiddenException
+     * @throws MethodNotAllowedException
+     */
     public function request($path, $method, $widthToken = true, $body = null)
     {
         $request = new Request();
@@ -116,31 +129,60 @@ abstract class AbstractRequest implements RequestInterface
         return $client->getResponse();
     }
 
+    /**
+     * @param $id
+     * @return AbstractResponse
+     * @throws MethodNotAllowedException
+     */
     public function fetch($id)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
+    /**
+     * @param array $params
+     * @return AbstractResponse
+     * @throws MethodNotAllowedException
+     */
     public function fetchAll(array $params = array())
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
+    /**
+     * @param $data
+     * @return AbstractResponse
+     * @throws MethodNotAllowedException
+     */
     public function create($data)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
+    /**
+     * @param $id
+     * @param $data
+     * @return AbstractResponse
+     * @throws MethodNotAllowedException
+     */
     public function update($id, $data)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
+    /**
+     * @param $id
+     * @return AbstractResponse
+     * @throws MethodNotAllowedException
+     */
     public function delete($id)
     {
         throw new MethodNotAllowedException('Method Not Allowed');
     }
 
+    /**
+     * @return array
+     */
     public function getOptions()
     {
         return $this->_options;
