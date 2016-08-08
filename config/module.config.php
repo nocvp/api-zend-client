@@ -9,6 +9,7 @@
 namespace NocVpClient;
 
 use NocVpClient;
+use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
@@ -22,20 +23,23 @@ return [
         'client_secret' => '',
     ),
     */
-    'routes' => [
-        'home' => [
-            'child_routes' => [
-                'videos' => [
-                    'type' => Segment::class,
-                    'options' => [
-                        'route' => '[/:lang]/noc-vp/api/:service',
-                        'defaults' => [
-                            'controller' => NocVpClient\Mvc\Controller\ApiController::class,
-                            'lang' => 'en',
+    'router' => [
+        'routes' => [
+            'noc-vp' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/noc-vp',
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'api' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/api/:service',
+                            'defaults' => [
+                                'controller' => NocVpClient\Mvc\Controller\ApiController::class,
+                            ],
                         ],
-                        'constraints' => array(
-                            'lang' => '(en|tr|de|fr|nl)?',
-                        ),
                     ],
                 ],
             ],
