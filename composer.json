@@ -11,11 +11,11 @@
   "prefer-stable": true,
   "require": {
     "php": "^5.6 || ^7.0",
-    "zendframework/zend-modulemanager": "dev-master",
-    "zendframework/zend-config": "dev-master",
-    "zendframework/zend-servicemanager": "dev-master",
-    "zendframework/zend-http": "dev-master",
     "zendframework/zend-mvc": "^3.0.1",
-    "zendframework/zend-json": "^3.0"
+    "zendframework/zend-json": "^3.0",
+    "zendframework/zend-http": "^2.5",
+    "zendframework/zend-servicemanager": "^3.1",
+    "zendframework/zend-config": "^2.6",
+    "zendframework/zend-modulemanager": "^2.7"
   }
 }
