@@ -6,7 +6,7 @@
  * Time: 12:20
  */
 
-namespace NocVpClient\Mvc\Controller\Plugin\Factory;
+namespace NocVpClient\Mvc\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;

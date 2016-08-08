@@ -56,7 +56,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            NocVpClient\Mvc\Controller\ApiController::class => NocVpClient\Mvc\Controller\Plugin\Factory\ApiControllerFactory::class,
+            NocVpClient\Mvc\Controller\ApiController::class => NocVpClient\Mvc\Controller\Factory\ApiControllerFactory::class,
         ],
     ],
     'controller_plugins' => [
