@@ -11,7 +11,6 @@ namespace NocVpClient;
 use NocVpClient;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     /*
@@ -57,7 +56,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            NocVpClient\Mvc\Controller\ApiController::class => InvokableFactory::class,
+            NocVpClient\Mvc\Controller\ApiController::class => NocVpClient\Mvc\Controller\Plugin\Factory\ApiControllerFactory::class,
         ],
     ],
     'controller_plugins' => [

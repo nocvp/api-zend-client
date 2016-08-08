@@ -10,7 +10,6 @@ namespace NocVpClient\Mvc\Controller;
 
 use NocVpClient\Mvc\Controller\Plugin\NocVpPlugin;
 use NocVpClient\Service\AbstractRequest;
-use Zend\Filter\Word\DashToCamelCase;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
@@ -24,10 +23,9 @@ class ApiController extends AbstractRestfulController
 {
     protected $service_name;
 
-    public function __construct()
+    public function __construct($serviceName)
     {
-        $filter = new DashToCamelCase();
-        $this->service_name = $filter->filter($this->params()->fromRoute('service'));
+        $this->service_name = $serviceName;
     }
 
     /**
