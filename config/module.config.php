@@ -27,6 +27,7 @@ return array(
             'NocVp\Account' => NocVpClient\Service\Factory\AccountServiceFactory::class,
             'NocVp\User' => NocVpClient\Service\Factory\UserServiceFactory::class,
             'NocVp\Client' => NocVpClient\Service\Factory\ClientServiceFactory::class,
+            'NocVp\Asset' => NocVpClient\Service\Factory\AssetServiceFactory::class,
         ),
     ),
     'controller_plugins' => array(

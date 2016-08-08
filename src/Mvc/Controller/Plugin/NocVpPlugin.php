@@ -14,6 +14,7 @@ use NocVpClient\Service\ClientService;
 use NocVpClient\Service\SubscriptionService;
 use NocVpClient\Service\TokenService;
 use NocVpClient\Service\UserService;
+use NocVpClient\Service\AssetService;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 
@@ -21,11 +22,12 @@ use Zend\ServiceManager\Exception\ServiceNotFoundException;
  * Class NocVpPlugin
  * @package NocVpClient\Mvc\Controller
  *
- * @method TokenService token
- * @method SubscriptionService subscription
- * @method AccountService account
- * @method UserService user
- * @method ClientService client
+ * @method TokenService token()
+ * @method SubscriptionService subscription()
+ * @method AccountService account()
+ * @method UserService user()
+ * @method ClientService client()
+ * @method AssetService asset()
  */
 class NocVpPlugin extends AbstractPlugin
 {
