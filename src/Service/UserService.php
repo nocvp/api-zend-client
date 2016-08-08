@@ -21,7 +21,11 @@ class UserService extends AbstractRequest
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_GET);
 
-        return new User($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new User($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function fetchAll(array $params = array())
@@ -29,12 +33,16 @@ class UserService extends AbstractRequest
         $response = $this->request($this->getEndpoint(), Request::METHOD_GET);
         $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
-        $results = array();
-        foreach ($data as $row) {
-            $results[] = new User($row);
-        }
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            $results = array();
+            foreach ($data as $row) {
+                $results[] = new User($row);
+            }
 
-        return $results;
+            return $results;
+        } else {
+            return $data;
+        }
     }
 
     public function create($userRequest)
@@ -53,7 +61,11 @@ class UserService extends AbstractRequest
 
         $response = $this->request($this->getEndpoint(), Request::METHOD_POST, false, $userRequest->toJson());
 
-        return new User($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new User($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function update($id, $userRequest)
@@ -73,13 +85,21 @@ class UserService extends AbstractRequest
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_PUT, false,
             $userRequest->toJson());
 
-        return new User($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new User($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function delete($id)
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_DELETE);
 
-        return new User($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new User($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 }

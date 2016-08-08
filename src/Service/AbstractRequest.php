@@ -24,6 +24,9 @@ use Zend\Http\Request;
  */
 abstract class AbstractRequest implements RequestInterface
 {
+    const HYDRATE_ARRAY = 'ARRAY';
+    const HYDRATE_MODEL = 'MODEL';
+
     /**
      * @var string
      */
@@ -40,6 +43,10 @@ abstract class AbstractRequest implements RequestInterface
      * @var string
      */
     protected $_token;
+    /**
+     * @var string
+     */
+    protected $_hydration = self::HYDRATE_MODEL;
 
     /**
      * @param array $options
@@ -226,5 +233,21 @@ abstract class AbstractRequest implements RequestInterface
     public function setEndpoint($endpoint)
     {
         $this->_endpoint = $endpoint;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHydration()
+    {
+        return $this->_hydration;
+    }
+
+    /**
+     * @param string $hydration
+     */
+    public function setHydration($hydration)
+    {
+        $this->_hydration = $hydration;
     }
 }

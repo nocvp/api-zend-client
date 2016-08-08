@@ -11,6 +11,7 @@ namespace NocVpClient\Service;
 use NocVpClient\Model\Response\Token;
 use NocVpClient\Service\Exception\InvalidRequestDataException;
 use Zend\Http\Request;
+use Zend\Json\Json;
 
 class TokenService extends AbstractRequest
 {
@@ -32,6 +33,10 @@ class TokenService extends AbstractRequest
 
         $response = $this->request($this->getEndpoint(), Request::METHOD_POST, false, $tokenRequest->toJson());
 
-        return new Token($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Token($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 }

@@ -21,7 +21,11 @@ class SubscriptionService extends AbstractRequest
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_GET);
 
-        return new Subscription($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Subscription($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function fetchAll(array $params = array())
@@ -29,12 +33,16 @@ class SubscriptionService extends AbstractRequest
         $response = $this->request($this->getEndpoint(), Request::METHOD_GET);
         $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
-        $results = array();
-        foreach ($data as $row) {
-            $results[] = new Subscription($row);
-        }
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            $results = array();
+            foreach ($data as $row) {
+                $results[] = new Subscription($row);
+            }
 
-        return $results;
+            return $results;
+        } else {
+            return $data;
+        }
     }
 
     public function create($subscriptionRequest)
@@ -53,7 +61,11 @@ class SubscriptionService extends AbstractRequest
 
         $response = $this->request($this->getEndpoint(), Request::METHOD_POST, false, $subscriptionRequest->toJson());
 
-        return new Subscription($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Subscription($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function update($id, $subscriptionRequest)
@@ -73,13 +85,21 @@ class SubscriptionService extends AbstractRequest
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_PUT, false,
             $subscriptionRequest->toJson());
 
-        return new Subscription($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Subscription($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function delete($id)
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_DELETE);
 
-        return new Subscription($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Subscription($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 }

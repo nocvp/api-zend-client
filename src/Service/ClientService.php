@@ -21,7 +21,11 @@ class ClientService extends AbstractRequest
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_GET);
 
-        return new Client($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Client($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function fetchAll(array $params = array())
@@ -29,12 +33,16 @@ class ClientService extends AbstractRequest
         $response = $this->request($this->getEndpoint(), Request::METHOD_GET);
         $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
-        $results = array();
-        foreach ($data as $row) {
-            $results[] = new Client($row);
-        }
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            $results = array();
+            foreach ($data as $row) {
+                $results[] = new Client($row);
+            }
 
-        return $results;
+            return $results;
+        } else {
+            return $data;
+        }
     }
 
     public function create($clientRequest)
@@ -53,7 +61,11 @@ class ClientService extends AbstractRequest
 
         $response = $this->request($this->getEndpoint(), Request::METHOD_POST, false, $clientRequest->toJson());
 
-        return new Client($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Client($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function update($id, $clientRequest)
@@ -73,13 +85,21 @@ class ClientService extends AbstractRequest
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_PUT, false,
             $clientRequest->toJson());
 
-        return new Client($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Client($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function delete($id)
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_DELETE);
 
-        return new Client($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Client($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 }

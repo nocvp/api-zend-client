@@ -9,7 +9,6 @@
 namespace NocVpClient\Service;
 
 use NocVpClient\Model\Response\Asset;
-use NocVpClient\Service\Exception\InvalidRequestDataException;
 use Zend\Http\Request;
 use Zend\Json\Json;
 
@@ -21,7 +20,11 @@ class AssetService extends AbstractRequest
     {
         $response = $this->request($this->getEndpoint() . '/' . $id, Request::METHOD_GET);
 
-        return new Asset($response->getBody());
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            return new Asset($response->getBody());
+        } else{
+            return Json::decode($response->getBody(), Json::TYPE_ARRAY);
+        }
     }
 
     public function fetchAll(array $params = array())
@@ -29,11 +32,15 @@ class AssetService extends AbstractRequest
         $response = $this->request($this->getEndpoint(), Request::METHOD_GET);
         $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
-        $results = array();
-        foreach ($data as $row) {
-            $results[] = new Asset($row);
-        }
+        if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
+            $results = array();
+            foreach ($data as $row) {
+                $results[] = new Asset($row);
+            }
 
-        return $results;
+            return $results;
+        } else {
+            return $data;
+        }
     }
 }
