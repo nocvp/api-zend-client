@@ -1,3 +1,8 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/nocvp/api-zend-client/compare/0.3.0...v0.3.1) (2016-08-08)
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/nocvp/api-zend-client/compare/0.2.12...v0.3.0) (2016-05-30)
 
