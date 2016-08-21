@@ -63,7 +63,16 @@ abstract class AbstractRequest implements RequestInterface
     public function getToken($reload = false)
     {
         if (empty($this->_token) === true || $reload === true) {
-            $file = 'data/cache/token';
+            if (!empty($this->_options['cache_path'])) {
+                $dir = rtrim($this->_options['cache_path'], '/') . '/';
+
+                if (is_dir($dir) !== true) {
+                    mkdir($dir, 0777, true);
+                }
+            } else {
+                $dir = 'data/cache/';
+            }
+            $file = $dir . 'token.cache';
             if (file_exists($file) === true && $reload === false) {
                 $this->_token = file_get_contents($file);
             } else {
