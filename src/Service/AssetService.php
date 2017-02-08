@@ -30,7 +30,7 @@ class AssetService extends AbstractRequest
 
     public function fetchAll(array $params = array())
     {
-        $response = $this->request($this->getEndpoint(), Request::METHOD_GET);
+        $response = $this->request($this->getEndpoint() . '?' . http_build_query($params), Request::METHOD_GET);
         $data = Json::decode($response->getBody(), Json::TYPE_ARRAY);
 
         if ($this->getHydration() == AbstractRequest::HYDRATE_MODEL) {
